@@ -6,9 +6,10 @@ const {emailBody} = require("./emailBody")
 const transporter = nodemailer.createTransport({
     service:"hotmail",
     auth:{
-        user:"myfitnesstracker@outlook.in",
-        pass:"Aditi@0622"
-    }
+        user:process.env.EMAIL,
+        pass:process.env.PASSWORD
+    },
+  
 })
 
 
@@ -17,7 +18,7 @@ const sendWelcomeEmail = (name,email)=>{
     let body = emailBody(name,"cid:menu","cid:mailBody")
     
     const options={
-        from:"myfitnesstracker@outlook.in",
+        from:process.env.EMAIL,
         to:email,
         subject:"Welcome",
         text:"Registration Success",
